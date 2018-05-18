@@ -1,19 +1,11 @@
-# 颜如玉
+# face_merge_master 人脸融合大师
 
-颜如玉 —— python 人脸融合程序，可实现类似天天P图疯狂换脸、face++人脸融合效果
+人脸融合大师 —— python 人脸融合程序，可实现类似天天P图疯狂换脸、face++人脸融合效果
 
 # 项目描述
 
 最近随着各种技术的发展，图像方面的人脸处理技术越来越广泛。各大相机软件都有美颜、贴图、换发型、变脸等功能。天天P图与Face++也都推出人脸处理的 API，不过价格方面就有点不亲民了。于是本人将之前研究完成的人脸融合算法开源出来。
 
-## 效果对比
-国际惯例，我们看看颜如玉与天天P图、Face++合成效果的对比：
-
-![模特图 与 待融合图](/images/2282038-aac086bb0936f818.jpg)
-
-![结果对比](/images/2282038-2fa801fc113b8a53.jpg)
-
-* 注：Face++ 为调用其官网 API 生成的效果，天天P图则是直接使用该 APP 生成的效果
 
 ### 使用
 
@@ -21,12 +13,12 @@
 ```
 pip install -r requirements.txt
 ```
-- 运行 ModuleTest.py 的主函数
+- 运行 run.py 的主函数,为保持后台长期运行，使用nohup
 ```
-python ModuleTest.py
+nohup python -u run.py&
 ```
 
-生成的结果图片 output.jpg 储存在 images 文件中
+生成的结果会以api结果返回
 
 ### 算法详解
 
@@ -58,7 +50,7 @@ core.face_merge(src_img='images/model.jpg',
 - 使用腾讯平台的人脸识别及定位API （定位90个关键点）
 - 使用Face++平台的人脸识别定位API（定位106个关键点）
 
-本文采用的是Face++的 api，因为商用情况下 Face++ 定位的定数最多
+本文采用的是优图的 api
 
 ```
 // 获取两张图片的人脸关键点（矩阵格式与数组格式）
@@ -84,9 +76,6 @@ dst_matrix, dst_points, err = core.face_points(dst_img)
 
 具体算法来源：[matthewearl](http://matthewearl.github.io/2015/07/28/switching-eds-with-python/) 个人博客步骤2
 
-对齐结果：
-
-![结果展示](/images/2282038-87b0d91ba49136da.gif)
 
 ### 三、再次取点后融合脸部
 
@@ -94,9 +83,6 @@ dst_matrix, dst_points, err = core.face_points(dst_img)
 ```
 dst_img = morph_img(src_img, src_points, dst_img, dst_points, alpha)
 ```
-融合结果：
-
-![结果展示](/images/2282038-6f62bb9178d8ea54.jpg)
 
 具体的三角融合算法解说参考[这篇文章](https://www.learnopencv.com/face-morph-using-opencv-cpp-python/)
 
@@ -106,9 +92,6 @@ dst_img = morph_img(src_img, src_points, dst_img, dst_points, alpha)
 ```
 src_img = tran_src(src_img, src_points, dst_points, face_area)
 ```
-处理结果：
-
-![结果展示](/images/2282038-13d70b5c2508afda.jpg)
 
 
 ### 五、将融合后的脸部贴到模特图上
@@ -138,7 +121,4 @@ def merge_img(src_img, dst_img, dst_matrix, dst_points, k_size=None, mat_multipl
 
     return cv2.seamlessClone(np.uint8(dst_img), src_img, face_mask, center, cv2.NORMAL_CLONE)
 ```
-函数示意图：
-
-![步骤展示](/images/2282038-362be008f850ba22.jpg)
 
