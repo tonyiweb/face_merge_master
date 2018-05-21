@@ -84,7 +84,7 @@ dst_matrix, dst_points, err = core.face_points(dst_img)
 dst_img = morph_img(src_img, src_points, dst_img, dst_points, alpha)
 ```
 
-具体的三角融合算法解说参考[这篇文章](https://www.learnopencv.com/face-morph-using-opencv-cpp-python/)
+具体的三角融合算法解说参考[Face morph](https://www.learnopencv.com/face-morph-using-opencv-cpp-python/)
 
 ### 四、处理加工模特图片
 
