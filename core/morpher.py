@@ -176,7 +176,7 @@ def face_merge(src_img,dst_img, out_img,
     src_img_name = str(src_img)
     dst_img_name = str(dst_img)
     src_matrix, src_points, src_faces,err = core.face_points(src_img)
-    ##直接将第一次寻找目标任务读取的人脸数据作为参数传过来，减少查询人脸识别API次数
+    ##直接将第一次寻找目标人物读取的人脸数据作为参数传过来，减少查询人脸识别API次数
     # dst_matrix, dst_points, dst_faces,err = core.face_points(dst_img)
 
     src_img = cv2.imread(src_img, cv2.IMREAD_COLOR)
