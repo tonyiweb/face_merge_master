@@ -197,17 +197,16 @@ def face_merge(src_img,dst_img, out_img,
     dst_matrix, dst_points, morph_faces,err = core.face_points(morph_file)
 
     if isinstance(src_faces,dict):
-        src_img = tran_src(src_img, src_points, dst_points,
-                           [int(src_faces['x']), int(src_faces['y']), int(src_faces['width']),
-                            int(src_faces['height'])])
+        src_img = tran_src(src_img, src_points, dst_points,face_area)
     else:
         rTemp = src_faces.replace("u'", "\"")
         rTemp = rTemp.replace("'", "\"")
         src_faces = json.loads(rTemp)
-        src_img = tran_src(src_img, src_points, dst_points, [int(src_faces['x']),int(src_faces['y']),int(src_faces['width']),int(src_faces['height'])])
+        src_img = tran_src(src_img, src_points, dst_points, face_area)
 
     dst_img = merge_img(src_img, dst_img, dst_matrix, dst_points, k_size, mat_multiple)
-
+    # 在最后矫正颜色就可以去掉黑色块块
+    dst_img = correct_color(src_img, dst_img, src_matrix[core.FACE_POINTS])
     # 删除掉临时生成的文件
     os.remove(trans_file)
     os.remove(morph_file)
