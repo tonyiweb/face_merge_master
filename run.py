@@ -85,10 +85,10 @@ class MainHandler(tornado.web.RequestHandler):
         # images.append(url)
         output_image = merge_one(src_img,dst_img, 1,dst_matrix, dst_points)
         self.write({"imageUrl": output_image})
-        tempImage = str(dst_img)
-        if os.path.exists(tempImage):
-            # 删除文件
-            os.remove(tempImage)
+#         tempImage = str(dst_img)
+#         if os.path.exists(tempImage):
+#             # 删除文件
+#             os.remove(tempImage)
         endTime = time.time()
         print ('Total Cost: ',(endTime-nowTime))
 
