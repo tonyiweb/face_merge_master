@@ -6,6 +6,12 @@
 
 最近随着各种技术的发展，图像方面的人脸处理技术越来越广泛。各大相机软件都有美颜、贴图、换发型、变脸等功能。天天P图与Face++也都推出人脸处理的 API，不过价格方面就有点不亲民了。于是本人将之前研究完成的人脸融合算法开源出来。
 
+# 效果展示
+分别是模特图，待融合图，融合结果图。
+
+![model](https://user-images.githubusercontent.com/12276654/53707802-73fe9e00-3e6b-11e9-9427-b6b9af84b9ea.jpg)
+![smallgirl](https://user-images.githubusercontent.com/12276654/53707804-752fcb00-3e6b-11e9-8cbd-81c4ec174616.jpg)
+![output](https://user-images.githubusercontent.com/12276654/53707780-53cedf00-3e6b-11e9-841a-c35be1be80dc.jpg)
 
 ### 使用
 
