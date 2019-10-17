@@ -128,3 +128,8 @@ def merge_img(src_img, dst_img, dst_matrix, dst_points, k_size=None, mat_multipl
     return cv2.seamlessClone(np.uint8(dst_img), src_img, face_mask, center, cv2.NORMAL_CLONE)
 ```
 
+## 总结
+项目还有很多不完善的地方，有兴趣的盆友可以在我的项目上去改进，也希望大家能做出更有意思的项目来，我抛好砖就够了。
+有问题可以在issue里留言。
+
+
