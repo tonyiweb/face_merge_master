@@ -85,7 +85,7 @@ dst_matrix, dst_points, err = core.face_points(dst_img)
 
 ### 三、再次取点后融合脸部
 
-对步骤二转换后的带融合图片再次取关键的，然后与模特图的关键点一起做三角融合成新的图片
+对步骤二转换后的带融合图片再次取关键点，然后与模特图的关键点一起做三角融合成新的图片
 ```
 dst_img = morph_img(src_img, src_points, dst_img, dst_points, alpha)
 ```
